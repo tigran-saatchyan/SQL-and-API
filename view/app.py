@@ -27,7 +27,12 @@ def movie_by_genre(genre):
     return jsonify(controller.get_movie_by_genre(genre))
 
 
-@app.route('/search/<video_type>/<listed_in>/<release_year>')
+@app.route('/movie/cast/<first_actor>/<second_actor>')
+def most_played_with(first_actor: str, second_actor: str):
+    return jsonify(controller.get_most_played_with(first_actor, second_actor))
+
+
+@app.route('/search/<video_type>/<listed_in>/<int:release_year>')
 def by_type_genre_and_year(video_type, listed_in, release_year):
     return jsonify(
         controller.get_by_type_genre_and_year(
